@@ -1,4 +1,5 @@
 ## 1. Reconnaissance & Brute-Force Discovery
+
 Identified initial scanning activity followed by an automated HTTP POST brute-force attack against the Joomla management interface.
 
 Splunk SPL
@@ -7,6 +8,7 @@ index=bots sourcetype="stream:http" http_method="POST" uri="*administrator/index
 Result: External IP 23.22.63.114 successfully cracked administrative credentials (admin:pussy).
 
 ## 2. Endpoint Payload Staging (Sysmon ID 11)
+
 Investigated host-level file creations following access to isolate non-standard executables dropped within user profiles.
 
 Splunk SPL
@@ -19,6 +21,7 @@ Result: Identified a suspicious binary masquerading as the Windows On-Screen Key
 C:\Users\bob.smith.WAYNECORPINC\AppData\Roaming\{35ACA89F-933F-6A5D-2776-A3589FB99832}\osk.exe
 
 ## 3. Execution Lineage & Ransomware Analysis (Sysmon ID 1)
+
 Traced process tree execution and extracted hash signatures for threat intelligence verification.
 
 Splunk SPL
@@ -35,6 +38,7 @@ Payload Hash (SHA256): 37397f8d8e4b3731749094d7b7cd2cf56cacb12dd69e0131f07dd78df
 Threat Intelligence Match: Confirmed Cerber Ransomware (56/70 VirusTotal detections).
 
 ## 4. Command & Control (C2) Tracking (Sysmon ID 3 / Firewall Logs)
+
 Uncovered process injection into Internet Explorer used to handle C2 communication and key exchange.
 
 Splunk SPL
@@ -48,6 +52,7 @@ Protocol Details: UDP traffic utilizing 44-byte beacon payloads.
 Blast Radius: Contained exclusively to endpoint 192.168.250.100 (we8105desk).
 
 ## Indicators of Compromise (IoCs)
+
 Plaintext
 [IP Addresses]
 40.80.148.42       - External Web Scanner (Acunetix)
